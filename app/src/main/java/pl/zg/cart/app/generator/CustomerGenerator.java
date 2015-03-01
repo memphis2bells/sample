@@ -9,7 +9,7 @@ import java.util.Random;
  */
 public final class CustomerGenerator {
     public static final String[] FIRST_NAME = {"Stefan", "Karol", "Jan"};
-    public static final String[] LAST_NAME = {"Batory", "Łokietek", "Wielki"};
+    public static final String[] LAST_NAME = {"Batory", "Cukierek", "Wielki"};
     public static final String[] EMAIL = {"gmail.com", "onet.pl", "wp.pl"};
     public static final String[] CITY = {"Katowice", "Warszawa", "Opole"};
 
@@ -29,7 +29,7 @@ public final class CustomerGenerator {
         return new Customer.CustomerBuilder()
                 .firstName(firstName)
                 .lastName(lastName)
-                .email(String.format("%s.%s@%s", firstName, lastName, email))
+                .email(String.format("%s.%s@%s", firstName.toLowerCase(), lastName.toLowerCase(), email))
                 .city(city)
                 .build();
     }
