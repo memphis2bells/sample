@@ -6,8 +6,17 @@ package pl.zg.cart.app;
  * Created by mb on 2015-02-24.
  */
 public class CartApp {
+    /**
+     * Application template.
+     */
+    private final TemplateImpl template;
 
+    /**
+     * Default constructor.
+     */
     public CartApp() {
+        template = new TemplateImpl();
+        start();
     }
 
     /**
@@ -16,6 +25,12 @@ public class CartApp {
      * @param args program params
      */
     public static void main(String[] args) {
-        CartApp cartApp = new CartApp();
+        new CartApp();
     }
+
+    private void start() {
+        template.register();
+    }
+
+
 }
