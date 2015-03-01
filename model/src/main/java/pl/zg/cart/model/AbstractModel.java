@@ -6,7 +6,12 @@ package pl.zg.cart.model;
 public abstract class AbstractModel<K, T> {
     private final K id;
 
-    public AbstractModel(K id) {
+    /**
+     * Constructor.
+     *
+     * @param id
+     */
+    public AbstractModel(final K id) {
         this.id = id;
     }
 
@@ -14,7 +19,14 @@ public abstract class AbstractModel<K, T> {
         return id;
     }
 
-    public abstract T build(K key, T t);
+    /**
+     * Builds object from giver object t and sets object id.
+     *
+     * @param key new object key
+     * @param t object which will be use to build new one
+     * @return Object with new id.
+     */
+    public abstract T build(final K key, final T t);
 
     @Override
     public String toString() {

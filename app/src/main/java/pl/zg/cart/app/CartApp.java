@@ -1,5 +1,7 @@
 package pl.zg.cart.app;
 
+import pl.zg.cart.app.impl.TemplateImpl;
+
 /**
  * Main class for the Simple Cart Application.
  * <p>
@@ -24,7 +26,7 @@ public class CartApp {
      *
      * @param args program params
      */
-    public static void main(String[] args) {
+    public static void main(final String... args) {
         new CartApp();
     }
 

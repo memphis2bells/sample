@@ -15,31 +15,39 @@ public class AbstractDao<K, T extends AbstractModel<K, T>> implements CrudDao<K,
      */
     private final Map<K, T> repo = new ConcurrentHashMap<>();
 
-    private final Table table;
+    /**
+     * Object type.
+     */
+    private final ObjectType objectType;
 
-    protected AbstractDao(Table table) {
-        this.table = table;
+    /**
+     * Constructor with object type param.
+     *
+     * @param objectType object type
+     */
+    protected AbstractDao(final ObjectType objectType) {
+        this.objectType = objectType;
     }
 
     @Override
-    public T create(T t) {
-        T build = t.build((K)IdGenerator.next(table), t);
+    public T create(final T t) {
+        final T build = t.build((K) IdGenerator.next(objectType), t);
         repo.put(build.getId(), build);
         return build;
     }
 
     @Override
-    public int update(T t) {
-        throw new UnsupportedOperationException();
+    public void update(final T t) {
+        repo.put(t.getId(), t);
     }
 
     @Override
-    public T read(K key) {
-        throw new UnsupportedOperationException();
+    public T read(final K key) {
+        return repo.get(key);
     }
 
     @Override
-    public int delete(K key) {
-        throw new UnsupportedOperationException();
+    public void delete(final K key) {
+        repo.remove(key);
     }
 }
